@@ -1,4 +1,7 @@
 package me.knightsy.discordbot.command;
 
-public class Command {
+import org.javacord.api.event.message.MessageCreateEvent;
+
+public interface Command {
+    void process(MessageCreateEvent event);
 }

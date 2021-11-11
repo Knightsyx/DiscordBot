@@ -1,15 +1,13 @@
-package me.knightsy.discordbot.commands;
+package me.knightsy.discordbot.command.commands;
 
+import me.knightsy.discordbot.command.Command;
+import me.knightsy.discordbot.util.EmbedMessage;
 import org.javacord.api.event.message.MessageCreateEvent;
-import org.javacord.api.listener.message.MessageCreateListener;
 
-public class PingCommand implements MessageCreateListener {
+public class PingCommand implements Command {
 
     @Override
-    public void onMessageCreate(MessageCreateEvent messageCreateEvent) {
-        if(messageCreateEvent.getMessageContent().equalsIgnoreCase("!ping")){
-            messageCreateEvent.getChannel().sendMessage("Pong!");
-        }
+    public void process(MessageCreateEvent event) {
+        new EmbedMessage(event.getMessageAuthor(), "Title", "Pong!", "footer", null, event.getChannel());
     }
-
 }
